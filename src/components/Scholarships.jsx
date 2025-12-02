@@ -46,7 +46,7 @@ export default function Scholarships(props) {
           <span></span>
         </div>
         
-        <a href="https://jimoviafoundation.org/2025-jim-ovia-scholarship-application-new-applicants/" rel="noopener noreferrer" target="_blank">Go to page</a>
+        <a className="apply" href="https://jimoviafoundation.org/2025-jim-ovia-scholarship-application-new-applicants/" rel="noopener noreferrer" target="_blank">Go to page</a>
       </div>
     </main>
     )

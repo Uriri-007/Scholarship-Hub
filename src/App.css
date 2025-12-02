@@ -52,3 +52,13 @@ section.actions > div {
   border-radius: 4rem;
   background-color: var(--action-btn-bg-color);
 }
+
+main {
+  padding: 2rem 1rem;
+}
+
+div.scholarship {
+  padding: 12px;
+  box-shadow: 0 0.6px 0.5px var(--box-shadow-color);
+  border-radius: 16px;
+}
