@@ -7,9 +7,9 @@ export default function Header(props) {
     <header>
       <h1>THE SCHOLARSHIP HUB</h1>
       <section className="actions">
-        <div>Find <FontAwesomeIcon icon={faMagnifyingGlass}/></div>
-        <div>Filter <FontAwesomeIcon icon={faFilter} /></div>
-        <div>Sort <FontAwesomeIcon icon={faSort} /></div>
+        <button type="button">Find <FontAwesomeIcon icon={faMagnifyingGlass}/></button>
+        <button type="button">Filter <FontAwesomeIcon icon={faFilter} /></button>
+        <button type="button">Sort <FontAwesomeIcon icon={faSort} /></button>
       </section>
     </header>
     )

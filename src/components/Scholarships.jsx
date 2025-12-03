@@ -21,7 +21,8 @@ export default function Scholarships(props) {
         },
     })
     .then(response => {
-        setData(response)
+        setData(response[0].fields.Sponsor)
+        alert("true")
         return
     })
     .catch(err => {
@@ -33,17 +34,16 @@ export default function Scholarships(props) {
   return (
     <main>
       <div className="scholarship">
-        <div>
-          <h2>Jim Ovia Foundation Scholarship 2025</h2>
-          <span>Ongoing</span>
+        <div className="title">
+          <h2>Jim Ovia Foundation Scholarship 2025 <span className="status open">Ongoing</span></h2>
         </div>
         
-        <p>Provides comprehensive financial support for brilliant, indigent Nigerian students throughout their undergraduate studies.</p>
+        <p className="description">Provides comprehensive financial support for brilliant, indigent Nigerian students throughout their undergraduate studies.</p>
         
         <div className="features">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span>Undergraduate <FontAwesomeIcon icon={faCheckCircle}/></span>
+          <span>NGN250,000 <FontAwesomeIcon icon={faGraduationCap}/></span>
+          <span>2nd Dec, 2025 <FontAwesomeIcon icon={faClock}/></span>
         </div>
         
         <a className="apply" href="https://jimoviafoundation.org/2025-jim-ovia-scholarship-application-new-applicants/" rel="noopener noreferrer" target="_blank">Go to page</a>
