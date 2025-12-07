@@ -1,0 +1,15 @@
+section.error {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+}
+
+section.error > p {
+  text-align: center;
+}
+
+span.signal-icon {
+  font-size: 64px;
+  opacity: 0.8;
+}

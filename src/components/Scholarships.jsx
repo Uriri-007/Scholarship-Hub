@@ -1,17 +1,13 @@
 import { useState, useEffect } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-    faClock,
-    faGraduationCap,
-    faCheckCircle
-} from "@fortawesome/free-solid-svg-icons";
-import clsx from "clsx";
+import LoadingUI from "./LoadingUI";
+import ScholarshipUI from "./ScholarshipUI";
+import ErrorUI from "./ErrorUI"
 import axios from "axios";
 
 export default function Scholarships(props) {
-    const [data, setData] = useState(null);
+    const [data, setData] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(null);
+    const [error, setError] = useState(false);
 
     const BASE_ID = import.meta.env.VITE_AIRTABLE_BASE_ID;
     const AIRTABLE_PAT = import.meta.env.VITE_AIRTABLE_PAT;
@@ -27,9 +23,8 @@ export default function Scholarships(props) {
                 }
             })
             .then(response => {
-                setData(response);
+                setData(response.data.records);
                 setLoading(false);
-                alert(data.records[0].id)
                 return;
             })
             .catch(err => {
@@ -41,43 +36,15 @@ export default function Scholarships(props) {
 
     return (
         <main>
-            <div className="scholarship">
-                <div className="title">
-                    <h2>
-                        Jim Ovia Foundation Scholarship 2025
-                        <span className="status closed">
-                            { data && "Yeah" }
-                        </span>
-                    </h2>
-                </div>
-
-                <p className="description">
-                    Provides comprehensive financial support for brilliant,
-                    indigent Nigerian students throughout their undergraduate
-                    studies.
-                </p>
-
-                <div className="features">
-                    <span>
-                        Undergraduate <FontAwesomeIcon icon={faCheckCircle} />
-                    </span>
-                    <span>
-                        NGN250,000 <FontAwesomeIcon icon={faGraduationCap} />
-                    </span>
-                    <span>
-                        2nd Dec, 2025 <FontAwesomeIcon icon={faClock} />
-                    </span>
-                </div>
-
-                <a
-                    className="apply"
-                    href="https://jimoviafoundation.org/2025-jim-ovia-scholarship-application-new-applicants/"
-                    rel="noopener noreferrer"
-                    target="_blank"
-                >
-                    Go to page
-                </a>
-            </div>
+            {loading ? (
+                <LoadingUI />
+            ) : data ? (
+                data.map(record => (
+                    <ScholarshipUI key={record.id} fields={record.fields} />
+                ))
+            ) : error ? (
+                <ErrorUI />
+            ) : ""}
         </main>
     );
 }
