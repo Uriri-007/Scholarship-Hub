@@ -23,16 +23,25 @@ export default function Scholarships(props) {
                 }
             })
             .then(response => {
+                console.log(response);                
                 setData(response.data.records);
                 setLoading(false);
                 return;
             })
             .catch(err => {
+                console.log(err);                
                 setError(err);
                 setLoading(false);
                 return;
             });
     }, []);
+
+//     function handleSearch(param) {
+//     dataUI.filter(record => {
+//         return record.fields.Name.toLowerCase().includes(param.toLowerCase());
+//     }
+//     )
+// }
 
     return (
         <main>

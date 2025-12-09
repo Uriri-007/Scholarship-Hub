@@ -1,4 +1,4 @@
-import "../Loading.css"
+import "../styles/Loading.css"
 
 export default function LoadingUI() {
     return (

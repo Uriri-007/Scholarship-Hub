@@ -1,4 +1,4 @@
-import "../Error.css"
+import "../styles/Error.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faUnlink } from "@fortawesome/free-solid-svg-icons";
 
