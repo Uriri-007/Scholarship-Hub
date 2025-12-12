@@ -6,6 +6,8 @@ import axios from "axios";
 
 export default function Scholarships(props) {
     const [data, setData] = useState(false);
+    const [query, setQuery] = useState()
+    const [info, setInfo] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -23,13 +25,11 @@ export default function Scholarships(props) {
                 }
             })
             .then(response => {
-                console.log(response);                
                 setData(response.data.records);
                 setLoading(false);
                 return;
             })
             .catch(err => {
-                console.log(err);                
                 setError(err);
                 setLoading(false);
                 return;
@@ -48,9 +48,7 @@ export default function Scholarships(props) {
             {loading ? (
                 <LoadingUI />
             ) : data ? (
-                data.map(record => (
-                    <ScholarshipUI key={record.id} fields={record.fields} />
-                ))
+            data.map(record => (<ScholarshipUI key={record.id} fields={record.fields} />))
             ) : error ? (
                 <ErrorUI />
             ) : ""}

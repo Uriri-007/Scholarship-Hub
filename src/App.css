@@ -1,6 +1,6 @@
 :root {
   --box-shadow-color: #3e3e3e;
-  --main-ft-color: #3a080d;
+  --main-ft-color: #04001f;
   --action-btn-bg-color: #b8b8b875;
   --features-bg-color: #ddddddc1;
   --open-bg-color: #0ecd0c;
@@ -59,19 +59,48 @@ header > h1 {
 section.actions {
   display: flex;
   justify-content: space-between;
+  height: 40px;
+  border: 1px solid;
+  border-radius: 4rem;
+  background-color: var(--body-bg-color);
+}
+section.actions > label {
+  flex: 4;
 }
 
-section.actions > button {
-  display: flex;
-  gap: 0.8rem;
-  align-items: center;
-  border: 1px solid;
+input[type="text"] {
+  height: 100%;
+  border: none;
+  width: 100%;
+  background-color: transparent;
+  padding-left: 10px;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+button#find {
+  flex: 1;
   padding: 8px 10px;
-  border-radius: 4rem;
-  background-color: var(--action-btn-bg-color);
   color: var(--main-ft-color);
   cursor: pointer;
+  background-color: transparent;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 4rem;
+  -webkit-tap-highlight-color: none;
+  transition: all 0.2s;
 }
+
+button#find:hover, button#find:active, button#find:focus, button#find:click {
+  border-radius: 4rem;
+  background-color: inherit;
+  outline: !none;
+  box-shadow: !none;
+  transform: scale(1.1);
+}
+
 
 main {
   padding: 2rem 1rem;

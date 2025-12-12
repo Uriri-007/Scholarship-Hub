@@ -19,7 +19,8 @@ div.dot-container {
 div.dot {
     width: 15px;
     height: 15px;
-    background-color: #3a080d;
+    background-color: #1a0add5c;
+    border: 1px dotted;
     border-radius: 50%;
     display: inline-block;
     animation: bounce-wave 1.4s infinite ease-in-out both;
