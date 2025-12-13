@@ -6,8 +6,6 @@ import axios from "axios";
 
 export default function Scholarships(props) {
     const [data, setData] = useState(false);
-    const [query, setQuery] = useState()
-    const [info, setInfo] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
 
@@ -36,14 +34,11 @@ export default function Scholarships(props) {
             });
     }, []);
 
-//     function handleSearch(param) {
-//     dataUI.filter(record => {
-//         return record.fields.Name.toLowerCase().includes(param.toLowerCase());
-//     }
-//     )
-// }
-
     return (
+      <>
+        <header>
+                <h2>THE SCHOLARSHIP HUB</h2>
+            </header>
         <main>
             {loading ? (
                 <LoadingUI />
@@ -53,5 +48,6 @@ export default function Scholarships(props) {
                 <ErrorUI />
             ) : ""}
         </main>
+        </>
     );
 }
