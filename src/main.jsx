@@ -1,5 +1,6 @@
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router'
+import { Analytics } from "@vercel/analytics/next"
 import App from './App'
 import Scholarship from './components/Scholarships'
 
@@ -15,5 +16,8 @@ const router = createBrowserRouter([
   ])
   
 createRoot(document.getElementById('root')).render(
+  <>
     <RouterProvider router={router} />
+    <Analytics />
+  </>
 )
