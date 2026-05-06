@@ -8,6 +8,8 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export default function ScholarshipUI({ fields }) {
+  if (!fields) return null;
+
   const classNames = {
     status: true,
     open: fields.Status === "Ongoing",
@@ -16,42 +18,47 @@ export default function ScholarshipUI({ fields }) {
   }
   
   const processDate = () => {
-    const date = new Date(fields.Date)
-    return date.toLocaleDateString()
+    if (!fields.Date) return "N/A";
+    try {
+        const date = new Date(fields.Date)
+        return date.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' });
+    } catch (e) {
+        return "Invalid Date";
+    }
   }
   
     return (
-        <div className="scholarship">
-            <div className="title">
-                <h2>
-                    {fields["Scholarship Name"]}
-                    <span className={clsx(classNames)}>{fields.Status}</span>
-                </h2>
+        <div className="scholarship-card">
+            <div className="card-header">
+                <h2>{fields["Scholarship Name"] || "Untitled Scholarship"}</h2>
+                <span className={clsx(classNames)}>{fields.Status || "Unknown"}</span>
             </div>
 
-            <p className="description">{fields.Description}</p>
+            <p className="description">{fields.Description || "No description available."}</p>
 
             <div className="features">
-                {fields.Eligibility.map((criterion, index) => (
-                    <span key={index}>
+                {fields.Eligibility && Array.isArray(fields.Eligibility) ? fields.Eligibility.map((criterion, index) => (
+                    <span key={index} className="feature-tag">
                         {criterion} <FontAwesomeIcon icon={faCheckCircle} />
                     </span>
-                ))}
-                <span>
-                    {fields.Value} <FontAwesomeIcon icon={faGraduationCap} />
-                </span>
-                <span>
+                )) : null}
+                {fields.Value && (
+                    <span className="feature-tag value">
+                        {fields.Value} <FontAwesomeIcon icon={faGraduationCap} />
+                    </span>
+                )}
+                <span className="feature-tag date">
                     { processDate() } <FontAwesomeIcon icon={fields.Status === "Ongoing" ? faClock : faCalendar} />
                 </span>
             </div>
 
             <a
-                className="apply"
+                className="apply-btn"
                 href={fields["Official Link"]}
                 rel="noopener noreferrer"
                 target="_blank"
             >
-                Go to page
+                Apply Now
             </a>
         </div>
     );

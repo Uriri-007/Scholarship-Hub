@@ -1,15 +1,27 @@
-section.error {
+.error {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
-}
-
-section.error > p {
+  justify-content: center;
+  padding: 4rem 2rem;
+  grid-column: 1 / -1;
   text-align: center;
 }
 
-span.signal-icon {
-  font-size: 64px;
-  opacity: 0.8;
+.error h2 {
+  font-size: 1.5rem;
+  color: var(--error);
+  text-transform: capitalize;
+}
+
+.error p {
+  color: var(--text-muted);
+  max-width: 400px;
+}
+
+.signal-icon {
+  font-size: 4rem;
+  color: var(--error);
+  opacity: 0.5;
 }
